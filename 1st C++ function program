@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+// Callouts
+int getValue();
+bool isEven(int);
+void showResult(bool);
+
+int main() {
+    int value = getValue(); // had to call returns via variable
+    bool evenCheck = isEven(value);
+    showResult(evenCheck); // except for void (no returns)
+    
+    return 0;
+}
+
+int getValue(){
+    int userValue;
+    
+    cout << "Please enter a value: ";
+    while (!(cin >> userValue)){ // weeding out bad inputs
+        cin.clear(); // clears up the tripped flag
+        cin.ignore(1000, '\n'); // completely clearing out up to 1000 characters. Resumes at newline.
+        cout << "invalid input" << endl; // newline detected
+    }
+    
+    return userValue;
+}
+    
+bool isEven(int userValue){
+    return(userValue % 2 == 0); // easy
+}
+
+void showResult(bool flag){
+    if (flag){cout << "The number you entered is even.";}
+    else{cout << "The number you entered is odd.";
+}
+}
